@@ -8,9 +8,10 @@ This environment is used to run Molecular Studio V Workflows.It uses `pixi` and 
 
 ## Installation
 
-#### Pixi
+> [!NOTE]
+> Windows Users: Please use WSL for running the Molecule Studio V environment
 
-### Linux/MacOS
+### Pixi
 
 To install pixi you can run the following command in your terminal:
 
@@ -23,10 +24,6 @@ if your system does not have `curl` installed, you can install it with `wget`:
 ```sh
 wget -qO- https://pixi.sh/install.sh | sh
 ```
-
-### Windows
-
-See the installation instructions [here](https://github.com/direnv/direnv#installation).
 
 #### Direnv
 
