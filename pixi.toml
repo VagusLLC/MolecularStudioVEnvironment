@@ -1,0 +1,28 @@
+[workspace]
+authors = ["Carson Farmer <59753859+cfarm6@users.noreply.github.com>"]
+channels = ["conda-forge"]
+name = "test_launchpad"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks] 
+setup = {cmd = "python populate_templates.py"}
+fireworks_setup = {cmd = "lpad reset"}
+launch = {cmd = "rlaunch rapidfire"}
+
+[activation.env]
+JOBFLOW_CONFIG_FILE="jobflow.yaml"
+
+[dependencies]
+python = ">=3.9"
+rich = ">=14.1.0,<15"
+xtb = ">=6.7.0"
+crest = ">=3.0.2"
+
+[pypi-dependencies]
+jobflow = ">=0.2.0, <0.3"
+torch = { version = ">=2.5.1", index = "https://download.pytorch.org/whl/cu126" }
+jobflowchemistry = { git = "https://github.com/cfarm6/JobflowChemistry.git" }
+fireworks = ">=2.0.4, <3"
+aimnet = {git = "https://github.com/cfarm6/aimnetcentral.git", branch = "numpy2.0"}
+Auto3d = {git="https://github.com/cfarm6/Auto3D_pkg.git"}
