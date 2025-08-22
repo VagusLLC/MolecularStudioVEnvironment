@@ -1,6 +1,6 @@
 JOB_STORE:
   docs_store:
-    type: MONGO_URIStore
+    type: MongoURIStore
     uri: {{MONGO_URI}}
     collection_name: docs_store
   additional_stores:
@@ -10,12 +10,12 @@ JOB_STORE:
       collection_name: files
       uri: {{MONGO_URI}}
     settings: 
-      type: MONGO_URIStore
+      type: MongoURIStore
       uri: {{MONGO_URI}}
       database: data
       collection_name: settings
     properties:
-      type: MONGO_URIStore
+      type: MongoURIStore
       uri: {{MONGO_URI}}
       database: data
       collection_name: properties
