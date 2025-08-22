@@ -6,26 +6,6 @@
 
 This environment is used to run Molecular Studio V Workflows.It uses `pixi` and `direnv` to manage the environment. To use this repo, you need to have `pixi` and `direnv` installed. To copy this for your project, click the green `Use this template` button in the top right of this page.
 
-## Getting Started
-Once you have `pixi` and `direnv` installed, you can use the following commands to get started:
-```sh
-pixi run setup
-```
-
-You will be required to enter your MongoDB URI for your `Fireworks` database. If you are starting from scratch without any workflows in your database, you can run the following command to initialize the database:
-```sh
-pixi run fireworks_setup
-```
-
-You will need to allow `direnv` to load the environment via `direnv allow .`. The environment should now automagically load/unload every time you `cd` into/out of the directory.
-
-## Running Workflows
-
-To run a workflow, you can use the following command:
-```sh
-pixi run launch
-```
-
 ## Installation
 
 #### Pixi
@@ -51,3 +31,24 @@ See the installation instructions [here](https://github.com/direnv/direnv#instal
 #### Direnv
 
 See [direnv](https://direnv.net/) for more information on how to install it.
+
+## Getting Started
+Once you have `pixi` and `direnv` installed, you can use the following commands to get started:
+```sh
+pixi run setup
+```
+
+You will be required to enter your MongoDB URI for your `Fireworks` database. If you are starting from scratch without any workflows in your database, you can run the following command to initialize the database:
+```sh
+pixi run fireworks_setup
+```
+
+You will need to allow `direnv` to load the environment via `direnv allow .`. The environment should now automagically load/unload every time you `cd` into/out of the directory.
+
+## Running Workflows
+
+To run a workflow, you can use the following command:
+```sh
+pixi run launch
+```
+
