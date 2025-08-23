@@ -1,8 +1,8 @@
 JOB_STORE:
   docs_store:
     type: MongoURIStore
-    database:data
     uri: {{MONGO_URI}}
+    database: data
     collection_name: docs_store
   additional_stores:
     files:
