@@ -2,21 +2,21 @@ JOB_STORE:
   docs_store:
     type: MongoURIStore
     uri: {{MONGO_URI}}
-    database: data
+    database: {{MONGO_DOCS_COLLECTION}}
     collection_name: docs_store
   additional_stores:
     files:
       type: GridFSURIStore
-      database: data
+      database: {{MONGO_DOCS_COLLECTION}}
       collection_name: files
       uri: {{MONGO_URI}}
     settings: 
       type: MongoURIStore
       uri: {{MONGO_URI}}
-      database: data
+      database: {{MONGO_DOCS_COLLECTION}}
       collection_name: settings
     properties:
       type: MongoURIStore
       uri: {{MONGO_URI}}
-      database: data
+      database: {{MONGO_DOCS_COLLECTION}}
       collection_name: properties

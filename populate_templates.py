@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Script to populate Jinja2 templates with user-provided values.
-This script prompts the user for the MongoURI and renders the Jinja2 templates.
+This script checks for a .env file first, then prompts the user for any missing variables.
 """
 
 import os
@@ -10,32 +10,69 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader
 
 
-def get_user_input():
-    """Prompt the user for the MongoURI."""
-    print("🔧 Populating Jinja2 templates with user input...")
+def load_env_file():
+    """Load environment variables from .env file if it exists."""
+    env_vars = {}
+    env_file = Path('.env')
+    
+    if env_file.exists():
+        print("📁 Found .env file, loading environment variables...")
+        try:
+            with open(env_file, 'r') as f:
+                for line in f:
+                    line = line.strip()
+                    if line and not line.startswith('#') and '=' in line:
+                        key, value = line.split('=', 1)
+                        key = key.strip()
+                        value = value.strip().strip('"\'')
+                        env_vars[key] = value
+            print(f"✓ Loaded {len(env_vars)} variable(s) from .env file")
+        except Exception as e:
+            print(f"⚠️  Warning: Could not read .env file: {e}")
+            env_vars = {}
+    else:
+        print("📁 No .env file found")
+    
+    return env_vars
+
+
+def get_user_input(env_vars):
+    """Prompt the user for any missing required variables."""
+    print("🔧 Checking for required variables...")
     print()
     
-    # Prompt for MongoURI
-    while True:
-        mongo_uri = input("Please enter your MongoDB URI: ").strip()
-        if mongo_uri:
-            # Basic validation - check if it looks like a MongoDB URI
-            if mongo_uri.startswith(('mongodb://', 'mongodb+srv://')):
-                break
-            else:
-                print("⚠️  Warning: This doesn't look like a standard MongoDB URI.")
-                confirm = input("Continue anyway? (y/N): ").strip().lower()
-                if confirm in ['y', 'yes']:
+    # Check if MongoURI is already loaded from .env
+    if 'MONGO_URI' in env_vars:
+        print("✓ MONGO_URI found in .env file")
+        mongo_uri = env_vars['MONGO_URI']
+    else:
+        # Prompt for MongoURI if not in .env
+        print("❓ MONGO_URI not found in .env file, please enter it:")
+        while True:
+            mongo_uri = input("Please enter your MongoDB URI: ").strip()
+            if mongo_uri:
+                # Basic validation - check if it looks like a MongoDB URI
+                if mongo_uri.startswith(('mongodb://', 'mongodb+srv://')):
                     break
-        else:
-            print("❌ MongoURI cannot be empty. Please try again.")
-    
-    # Create environment variables dictionary
-    env_vars = {
-        'MONGO_URI': mongo_uri
-    }
-    
-    print(f"✓ MongoURI loaded successfully")
+                else:
+                    print("⚠️  Warning: This doesn't look like a standard MongoDB URI.")
+                    confirm = input("Continue anyway? (y/N): ").strip().lower()
+                    if confirm in ['y', 'yes']:
+                        break
+            else:
+                print("❌ MongoURI cannot be empty. Please try again.")
+        
+        # Add to env_vars dictionary
+        env_vars['MONGO_URI'] = mongo_uri
+        print(f"✓ MongoURI loaded successfully")
+    if 'MONGO_DOCS_COLLECTION' in env_vars:
+        print("✓ MONGO_DOCS_COLLECTION found in .env file")
+        mongo_docs_collection = env_vars['MONGO_DOCS_COLLECTION']
+    else:
+        print("❓ MONGO_DOCS_COLLECTION not found in .env file, please enter it:")
+        mongo_docs_collection = input("Please enter your MongoDB collection name: ").strip()
+        env_vars['MONGO_DOCS_COLLECTION'] = mongo_docs_collection
+        print(f"✓ MONGO_DOCS_COLLECTION loaded successfully")
     return env_vars
 
 
@@ -66,10 +103,13 @@ def render_template(template_path, output_path, env_vars):
 
 def main():
     """Main function to populate all templates."""
-    # Get user input for MongoURI
-    env_vars = get_user_input()
+    # Load environment variables from .env file
+    env_vars = load_env_file()
     
-    print(f"\nLoaded {len(env_vars)} value(s)")
+    # Get any missing user input
+    env_vars = get_user_input(env_vars)
+    
+    print(f"\nLoaded {len(env_vars)} value(s) total")
     
     # Define template mappings
     templates = [

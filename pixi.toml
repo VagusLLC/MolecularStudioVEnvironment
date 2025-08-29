@@ -28,3 +28,4 @@ fireworks = ">=2.0.4, <3"
 aimnet = {git = "https://github.com/cfarm6/aimnetcentral.git", branch = "numpy2.0"}
 Auto3d = {git="https://github.com/cfarm6/Auto3D_pkg.git"}
 tblite = "==0.4"
+orca-pi = ">=1.0.1, <2"
