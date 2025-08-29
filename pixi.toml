@@ -19,6 +19,7 @@ rich = ">=14.1.0,<15"
 xtb = ">=6.7.0"
 crest = ">=3.0.2"
 
+
 [pypi-dependencies]
 jobflow = ">=0.2.0, <0.3"
 torch = { version = ">=2.5.1", index = "https://download.pytorch.org/whl/cu126" }
@@ -26,3 +27,4 @@ jobflowchemistry = { git = "https://github.com/cfarm6/JobflowChemistry.git" }
 fireworks = ">=2.0.4, <3"
 aimnet = {git = "https://github.com/cfarm6/aimnetcentral.git", branch = "numpy2.0"}
 Auto3d = {git="https://github.com/cfarm6/Auto3D_pkg.git"}
+tblite = "==0.4"
