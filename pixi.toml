@@ -8,7 +8,7 @@ version = "0.1.0"
 [tasks] 
 setup = {cmd = "python populate_templates.py"}
 fireworks_setup = {cmd = "lpad reset"}
-launch = {cmd = "rlaunch rapidfire"}
+launch = {cmd = "rlaunch rapidfire", env = {JOBFLOW_CONFIG_FILE="./jobflow.yaml"}}
 
 [activation.env]
 JOBFLOW_CONFIG_FILE="jobflow.yaml"

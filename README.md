@@ -50,11 +50,10 @@ You will need to allow `direnv` to load the environment via `direnv allow .`. Th
 
 ## Automatic Setup
 
-To automatically setup the environment, place your `MONGO_URI` and `MONGO_DOCS_COLLECTION` in a `.env` file in the root of the project.
+To automatically setup the environment, place your `MONGO_URI` in a `.env` file in the root of the project.
 
 ```sh
 MONGO_URI=your_mongo_uri
-MONGO_DOCS_COLLECTION=your_mongo_docs_collection
 ```
 
 Then run the following command to setup the environment:
