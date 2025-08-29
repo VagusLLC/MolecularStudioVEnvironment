@@ -12,39 +12,59 @@ This environment is used to run Molecular Studio V Workflows.It uses `pixi` and 
 
 ### Pixi
 
-To install pixi you can run the following command in your terminal:
+To install `pixi` you can run the following command in your terminal:
 
 ```sh
 curl -fsSL https://pixi.sh/install.sh | sh
 ```
 
-if your system does not have `curl` installed, you can install it with `wget`:
+If your system does not have `curl` installed, you can install it with `wget`:
 
 ```sh
 wget -qO- https://pixi.sh/install.sh | sh
 ```
 
-#### Direnv
+### Direnv
 
 See [direnv](https://direnv.net/) for more information on how to install it.
 
 ## Getting Started
+
 Once you have `pixi` and `direnv` installed, you can use the following commands to get started:
+
 ```sh
 pixi run setup
 ```
 
 You will be required to enter your MongoDB URI for your `Fireworks` database. If you are starting from scratch without any workflows in your database, you can run the following command to initialize the database:
+
 ```sh
 pixi run fireworks_setup
 ```
 
 You will need to allow `direnv` to load the environment via `direnv allow .`. The environment should now automagically load/unload every time you `cd` into/out of the directory.
 
+## Automatic Setup
+
+To automatically setup the environment, place your `MONGO_URI` and `MONGO_DOCS_COLLECTION` in a `.env` file in the root of the project.
+
+```sh
+MONGO_URI=your_mongo_uri
+MONGO_DOCS_COLLECTION=your_mongo_docs_collection
+```
+
+Then run the following command to setup the environment:
+
+```sh
+pixi run setup
+```
+
+Additionally, place the `my_launchpad.yaml` file in the project directory from running `pixi run fireworks_setup`.
+
 ## Running Workflows
 
 To run a workflow, you can use the following command:
+
 ```sh
 pixi run launch
 ```
-
