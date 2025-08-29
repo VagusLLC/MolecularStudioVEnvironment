@@ -10,6 +10,10 @@ This environment is used to run Molecular Studio V Workflows.It uses `pixi` and 
 > [!NOTE]
 > Windows Users: Please use WSL for running the Molecule Studio V environment
 
+
+> [!NOTE]
+> If you are running ORCA calculations, you will need to install the `orca-pi` package and setup `ORCA` separately. See the [ORCA Installation Guide](https://www.faccts.de/docs/orca/6.1/manual/) for instructions.
+
 ### Pixi
 
 To install `pixi` you can run the following command in your terminal:
