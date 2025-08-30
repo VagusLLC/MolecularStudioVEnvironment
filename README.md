@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/github/license/rowansci/rowan-sample-env)](https://github.com/rowansci/rowan-sample-env/blob/master/LICENSE)
 [![Powered by: Pixi](https://img.shields.io/badge/Powered_by-Pixi-facc15)](https://pixi.sh)
 
-This environment is used to run Molecular Studio V Workflows.It uses `pixi` and `direnv` to manage the environment. To use this repo, you need to have `pixi` and `direnv` installed. To copy this for your project, click the green `Use this template` button in the top right of this page.
+This environment is used to run Molecular Studio V Workflows. It uses `pixi` and `direnv` to manage the environment. To use this repo, you need to have `pixi` and `direnv` installed. To copy this for your project, click the green `Use this template` button in the top right of this page.
 
 ## Installation
 
