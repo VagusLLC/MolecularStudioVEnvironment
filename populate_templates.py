@@ -8,6 +8,7 @@ import os
 import sys
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader
+from getpass import getpass
 
 
 def load_env_file():
@@ -49,7 +50,7 @@ def get_user_input(env_vars):
         # Prompt for MongoURI if not in .env
         print("❓ MONGO_URI not found in .env file, please enter it:")
         while True:
-            mongo_uri = input("Please enter your MongoDB URI: ").strip()
+            mongo_uri = getpass("Please enter your MongoDB URI [hidden for security]: ").strip()
             if mongo_uri:
                 # Basic validation - check if it looks like a MongoDB URI
                 if mongo_uri.startswith(('mongodb://', 'mongodb+srv://')):
